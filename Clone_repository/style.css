@@ -1,0 +1,326 @@
+/* ===== COLOR VARIABLES ===== */
+/* Change these 4 values and your whole site's palette updates */
+:root {
+  --bg: #F3F1EC;
+  --sage: #8A9A7E;
+  --terracotta: #C97B5A;
+  --dark-text: #2E2B26;
+}
+
+/* ===== RESET / BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--dark-text);
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  margin: 0 0 12px 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===== 1. HERO ===== */
+.hero {
+  background-color: var(--bg);
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--dark-text);
+}
+
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--sage);
+  max-width: 500px;
+  margin: 0 auto 28px auto;
+}
+
+/* ===== 2. PROJECT LIST ===== */
+/* Wraps all rows, controls overall width and vertical spacing */
+.project-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* generous vertical space = each project gets room to breathe */
+}
+
+/* ===== 3. PROJECT ROW (image + text side by side) ===== */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Every 2nd row reverses direction — this creates the zigzag/offset feel */
+.project-row:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+/* Nudge alternating rows left/right so they feel asymmetric, not gridded */
+.project-row:nth-child(odd) {
+  margin-right: 8%;
+}
+.project-row:nth-child(even) {
+  margin-left: 8%;
+}
+
+.project-image {
+  flex: 1 1 55%;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+   max-width: 450px;      /* caps how wide it can get */
+  height: 320px;         /* fixes the height so all thumbnails match */
+  object-fit: cover;
+}
+
+.project-text {
+  flex: 1 1 45%;
+}
+
+.project-text p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* ===== SCROLL REVEAL ===== */
+/* Starting (hidden) state: invisible and shifted down slightly */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* JS adds this class when the row scrolls into view */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stack image above text on smaller screens instead of side-by-side */
+@media (max-width: 700px) {
+  .project-row,
+  .project-row:nth-child(2n) {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ===== 4. PATTERNED SECTION ===== */
+/* Your one "fun" accent moment — used once, not repeated */
+.pattern-section {
+  background-image: url('images/pattern.jpg.jpg');
+  background-repeat: no-repeat;
+  background-size: 125%;
+  background-position: 75% center;
+  padding: 80px 40px;
+  border-radius: 24px;
+  text-align: center;
+  color: white;
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+}
+
+.pattern-section h2 {
+  color: white;
+}
+
+.pattern-section p {
+  max-width: 500px;
+  margin: 0 auto 24px auto;
+}
+
+/* ===== 5. BUTTONS ===== */
+.btn {
+  display: inline-block;
+  background-color: var(--sage);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--terracotta);
+}
+
+/* Light variant for use on dark/colored backgrounds like .pattern-section */
+.btn-light {
+  background-color: white;
+  color: var(--terracotta);
+}
+
+.btn-light:hover {
+  background-color: var(--dark-text);
+  color: white;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.85rem;
+  color: var(--sage);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 100% 0%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  margin: 0; /* remove the old bottom margin since it's no longer stacked */
+  flex-shrink: 0; /* keeps the photo from getting squished if space is tight */
+}
+
+.hero {
+  position: relative; /* anchors the stars' absolute positioning to this section */
+  overflow: hidden;   /* keeps any star that pokes past the edge from causing scroll issues */
+}
+
+.star {
+  position: absolute;
+  width: 40px;
+  opacity: 0.85;
+  pointer-events: none; /* stars won't block clicks on things beneath them */
+}
+
+/* Top-left cluster — scattered at different sizes/rotations/positions */
+
+/* Top-right cluster */
+.star-tr-1 { top: 25px;  right: 260px;  width: 106px; transform: rotate(15deg); }
+.star-tr-2 { top: 40px;  right: 5px; width: 350px; transform: rotate(0deg); }
+.star-tr-3 { top: 10px;  right: 15px; width: 220px; transform: rotate(-20deg); }
+
+.portrait-section {
+  position: relative;
+  height: 500px;        /* controls how tall this section is */
+  overflow: hidden;     /* slices off the half that goes past the edge */
+}
+
+.portrait-circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 5%;
+  position: absolute;
+  top: 0;
+  left: -200px;         /* half the width — pushes half of it off-screen */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+.project-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.project-subtitle {
+  color: var(--sage);
+  margin-bottom: 32px;
+}
+
+.detail-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.detail-gallery img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.portrait-circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%;
+  position: absolute;
+  top: 270px;
+  left: -180px;
+  transform: translateY(-50%);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  border: 8px solid var(--sage);   /* the rim */
+}
+
+.image-cluster {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.image-large {
+  width: 60%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.image-stack {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-stack img {
+  width: 100%;
+  height: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.image-pair {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px; /* space between the cluster above and this pair */
+}
+
+.image-pair img {
+  width: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.project-video {
+  width: 100%;
+  max-width: 350px;      /* controls the overall size */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}

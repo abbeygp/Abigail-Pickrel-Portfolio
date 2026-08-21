@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abigail Pickrel — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+
+<img src="images/shape3.png" alt="" class="star star-tr-1">
+<img src="images/e3760f29-cf87-4b39-a251-f1a7ba43d9fb.png"   alt="" class="star star-tr-2">
+<img src="images/shape4.png" alt="" class="star star-tr-3">
+ <div class="hero-text">
+<h1>Abigail Pickrel</h1>
+  <p>Major: Biomedical Engineering<br>Minor: Chemistry, Political Science</p>
+  <p>Digital Portfolio — Undergraduate work, 2023–2027.<br>Coded By Abbey Using Visual Studio Code</p>
+  <a href="#projects" class="btn">View Projects</a>
+</div>
+  <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\Headshot (2) - Abigail Pickrel.PNG" alt="Photo of Your Name" class="portrait-circle">
+</section>
+
+  <!-- 2 & 3. PROJECT LIST — alternating rows, reveal on scroll -->
+  <section id="projects" class="project-list">
+
+    <div class="project-row reveal">
+      <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\conference_photo.jpg" alt="Project one thumbnail" class="project-image">
+      <div class="project-text">
+        <h3>Research Experience and Conferences</h3>
+        <p>I have had the opportunity to showcase my research at conferences such as BMES and ACS through poster presentations and lightning talks. I have also presented at the Annual Focus on Creative Inquiry (FoCI) and EUREKA! Poster Forums at Clemson University. </p>
+        <a href="project1.html" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\EUREKA 2024_070224_AJ_008.jpeg" alt="Project two thumbnail" class="project-image">
+      <div class="project-text">
+        <h3>Leadership and Work Experience</h3>
+        <p>Throughout my time at Clemson, I have had the opportunity to step into many roles
+          that have helped shaped my creativity, that I now bring to engineering and research,
+          mentorship skills, and confidence taking on leadership.
+        </p>
+        <a href="project2.html" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\IMG_9653.jpeg" alt="Project three thumbnail" class="project-image">
+      <div class="project-text">
+        <h3>Campus Involvement and Honors</h3>
+        <p>Through my campus involvement, I have been an active member in my community,
+          grown closer with my peers at Clemson, and stepped into spaces and roles that
+          have challnged my abilities and enabled me to grow as a person and student.
+        </p>
+        <a href="project3.html" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\IMG_7181 (1).jpg" alt="Project three thumbnail" class="project-image">
+      <div class="project-text">
+        <h3>Skills and Projects</h3>
+        <p>Featured on this page are the skills and projects that I believe showcase my design abilities,
+          creativity, and drive to learn new skills and apply them to tangible products.
+        </p>
+        <a href="project4.html" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row reveal">
+      <img src="c:\Users\abbey.LAPTOP-B59HEL86\Downloads\circuit_photo.jpg" alt="Project three thumbnail" class="project-image">
+      <div class="project-text">
+        <h3>Special Interests</h3>
+        <p>This page includes a little more information about my personal interests, hobbies,
+          and what qualities I believe shape my unique perspective in engineering and research, 
+          as well as make me a well rounded student and worker.
+        </p>
+        <a href="project5.html" class="btn">View Project</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 4. PATTERNED SECTION (your one "fun" moment) -->
+  <section class="pattern-section">
+    <h2>Contact Information</h2>
+    <p>Email: apickre@g.clemson.edu, abbeygpickrel@gmail.com</p>
+    <a href="mailto:apickre@g.clemson.edu" class="btn btn-light">Contact Me</a>  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Your Name. Built by hand.</p>
+  </footer>
+
+  <script>
+    // Watches each .reveal element; when it scrolls into view, adds
+    // the "visible" class, which triggers the fade/slide-in in CSS.
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // only animate once
+        }
+      });
+    }, {
+      threshold: 0.2 // triggers when 20% of the row is visible
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
